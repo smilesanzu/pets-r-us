@@ -10,8 +10,20 @@
 // Import
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
+const Customer = require('./models/customer');
 
 const app = express();
+
+// mongoose connection address
+const CONN = 'mongodb+srv://sunflower:842128@web340db.u3jxivb.mongodb.net/test';
+
+// displays connection success or error messages
+mongoose.connect(CONN).then(() => {
+    console.log('Connection to MongoDB database was successful\n  If you see this message it means you were able to connect to your MongoDB Atlas cluster');
+}).catch(err => {
+    console.log('MongoDB Error: ' + err.message);
+})
 
 // Views
 app.set('views', path.join(__dirname, './views'));
@@ -39,7 +51,64 @@ app.get('/grooming', (req, res) => {
     })
 });
 
+app.get('/boarding', (req, res) => {
+    res.render('boarding', {
+        title: "Pets-R-Us: Boarding",
+        pageTitle: "Pets-R-Us: Boarding",
+    });
+});
 
+app.get('/training', (req, res) => {
+    res.render('training', {
+        title: "Pets-R-Us: Training",
+        pageTitle: "Pets-R-Us: Training",
+    });
+});
+
+app.get('/register', (req, res) => {
+    res.render('register', {
+        title: "Pets-R-Us: Register",
+        pageTitle: "Pets-R-Us: Register",
+    });
+});
+
+app.get('/customer', (req, res) => {
+    res.render('customerList', {
+        title: "Pets-R-Us: Customer List",
+        pageTitle: "Pets-R-Us: Customer List",
+    });
+});
+
+app.get('/appointment', (req, res) => {
+    res.render('appointment', {
+        title: "Pets-R-Us: My Appointments",
+        pageTitle: "Pets-R-Us: My Appointments",
+    });
+});
+
+// post route
+app.post('/customers', (req, res, next) => {
+    console.log(req.body);
+    console.log(req.body.customerId);
+    console.log(req.body.email);
+    const newCustomer = new Customer({
+        customerId: req.body.customerId,
+        email: req.body.email
+    })
+
+    console.log(newCustomer);
+
+    Customer.create(newCustomer, function(err, customer) {
+        if (err) {
+            console.log(err);
+            next(err);
+        } else {
+            res.render('index', {
+                title: 'Pets-R-Us'
+            })
+        }
+    })
+})
 
 
 // Port 3000
