@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%= title %>
+    </title>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles/site1.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="index.ejs" class="active">HOME</a>
+        <a href="boarding.ejs">BOARDING</a>
+        <a href="grooming.ejs">GROOMING</a>
+        <a href="training.ejs">TRAINING</a>
+        <a href="register.ejs">REGISTRATION</a>
+        <a href="">CUSTOMERS</a>
+        <a href="">APPOINTMENTS</a>
+    </div>
+
+    <header>
+
+    </header>
+
+    <div>
+
+        <article>
+            <h2>REGISTER</h2>
+            <div class="boxy">
+                <div class="aboutimg">
+                    <img src="" alt="" style="width:100%">
+                </div>
+                <p>Create an account for all Pets-R-Us services. It's free, quick and simple!</p>
+                <span class="sentence">Visit us today or schedule an appointment to see for yourself!</span>
+            </div>
+        </article>
+        <hr />
+        <div class="contact-container">
+            <form action="/customers" method="post">
+                <div class="form-field">
+                    <label for="customerId">Customer ID:</label><br>
+                    <input class="input" type="text" name="customerId" id="customerId" required autofocus>
+                </div>
+
+                <div class="form-field">
+                    <label for="email">Email:</label><br>
+                    <input class="input" type="text" name="email" id="email" required autofocus>
+                </div>
+
+                <div class="form-field">
+                    <input type="submit" value="Register Customer" class="btn btn-primary full-width">
+                </div>
+            </form>
+        </div>
+        <!-- Contact us -->
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <p>Want more information? Send us an email!</p>
+            <form>
+                <input type="email" placeholder="Email" />
+                <a href="" class="btn btn-primary">Send</a>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            &copy;
+            <script>
+                document.write(new Date().getFullYear());
+            </script>
+            Janis Gonzalez -
+            <a href="https://www.bellevue.edu/">Bellevue University</a>
+        </p>
+    </footer>
+</body>
+
+</html>
