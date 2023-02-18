@@ -12,7 +12,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const Customer = require('./models/customer');
-
+// express variable
 const app = express();
 
 // mongoose connection address
@@ -30,6 +30,8 @@ app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public/styles')));
 app.use(express.static(path.join(__dirname, 'public/images')));
 
@@ -110,6 +112,21 @@ app.post('/customers', (req, res, next) => {
     })
 })
 
+// route for customer list display
+app.get('/customers', (req, res) => {
+    Customer.find({}, function(err, customer) {
+        if (err) {
+            console.log(err);
+            next(err);
+        } else {
+            res.render('customerlist', {
+                title: "Pets-R-Us: Customer List",
+                pageTitle: "Pets-R-Us: Customer List",
+                customer: customer
+            })
+        }
+    })
+})
 
 // Port 3000
 app.listen(PORT, () => {
