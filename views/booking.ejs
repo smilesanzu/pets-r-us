@@ -1,0 +1,89 @@
+<!--
+    ==============================================
+    ;   Title: booking.ejs
+    ;   Author: Janis Gonzalez
+    ;   Date: 2/26/2023
+    ;   Description: appointment page for pets-r-us
+    ==============================================
+    -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%= title %>
+    </title>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/pets-r-us/public/styles/site.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!--Calls the header (navbar) file-->
+    <%- include('partials/_header.ejs') %>
+
+        <section>
+            <h1 class="center-text"> APPOINTMENT</h1>
+
+            <div class="contact-container">
+                <div class="card-title">
+                    <%= pageTitle %><br><br>
+                        <p>Book one of our amazing services today!</p><br><br> </div>
+                <div class="form">
+                    <form action="/booking" method="post">
+
+                        <div class="form-field">
+                            <label for="usertName">User Name</label><br />
+                            <input class="input" type="text" name="userName" id="userName" required autofocus>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="firstName">First Name</label><br />
+                            <input class="input" type="text" name="firstName" id="firstName" required autofocus>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="lastName">Last Name</label><br />
+                            <input class="input" type="text" name="lastName" id="lastName" required autofocus>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="email">Email</label><br />
+                            <input class="input" type="text" name="email" id="email" required autofocus>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="service">Service Option</label><br />
+                            <select name="service" id="service" class="drop-down-menu full-width" required>
+              <% services.forEach((service) => { %>
+              <option value="'<%= service.value %>'"><%= service.text %></option>
+              <% }) %>
+            </select>
+                        </div>
+
+                        <div class="form-field"><br>
+                            <input type="submit" value="Book Appointment" class="btn btn-primary full-width">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+
+        </section>
+
+        <br>
+
+        <!--Calls the footer file-->
+        <%- include('partials/_footer.ejs') %>
+
+
+</body>
+
+</html>

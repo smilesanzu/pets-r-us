@@ -9,7 +9,7 @@
         <%= title %>
     </title>
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles/site1.css" />
+    <link rel="stylesheet" href="/pets-r-us/public/styles/site.css" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,7 +24,7 @@
         <a href="training.ejs">TRAINING</a>
         <a href="register.ejs">REGISTRATION</a>
         <a href="customer-list.ejs">CUSTOMERS</a>
-        <a href="">APPOINTMENTS</a>
+        <a href="appointment.ejs">APPOINTMENTS</a>
     </div>
 
     <header>
@@ -45,7 +45,7 @@
         </article>
         <hr />
         <div class="contact-container">
-            <form action="/customers" method="post">
+            <form action="/pets-r-us/models/customer.js" method="post">
                 <div class="form-field">
                     <label for="customerId">Customer ID:</label><br>
                     <input class="input" type="text" name="customerId" id="customerId" required autofocus>
