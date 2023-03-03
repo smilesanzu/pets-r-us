@@ -11,6 +11,10 @@
         "type": "git",
         "url": "git+https://github.com/smilesanzu/pets-r-us.git"
     },
+    "engines": {
+        "node": "16.19.0",
+        "npm": "8.19.3"
+    },
     "author": "Janis Gonzalez",
     "license": "MIT",
     "bugs": {
@@ -23,6 +27,6 @@
         "mongoose": "^6.9.1"
     },
     "devDependencies": {
-        "nodemon": "^2.0.18"
+        "nodemon": "^2.0.20"
     }
 }

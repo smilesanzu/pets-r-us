@@ -74,7 +74,7 @@ app.get('/register', (req, res) => {
     });
 });
 
-app.get('/customer', (req, res) => {
+app.get('/customerList', (req, res) => {
     res.render('customerList', {
         title: "Pets-R-Us: Customer List",
         pageTitle: "Pets-R-Us: Customer List",
@@ -112,6 +112,7 @@ app.post('/customers', (req, res, next) => {
     })
 })
 
+
 // route for customer list display
 app.get('/customers', (req, res) => {
     Customer.find({}, function(err, customer) {
@@ -127,6 +128,63 @@ app.get('/customers', (req, res) => {
         }
     })
 })
+
+// renders the booking.ejs page and gets service info from services.json
+app.get('/booking', (req, res) => {
+    let jsonFile = fs.readFileSync('./public/data/services.json');
+    let services = JSON.parse(jsonFile);
+
+    console.log(services);
+
+    res.render('booking', {
+        title: 'Pets-R-Us: Appointment Booking',
+        pageTitle: 'Pets-R-Us: Appointment Booking',
+        services: services
+    })
+})
+
+// does POST action for booking when user clicks on the Book-Appointment button
+app.post('/booking', (req, res, next) => {
+    const newAppt = new appointment({
+            userName: req.body.userName,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            service: req.body.service
+        })
+        // create a new appointment and log error
+
+    appointment.create(newAppt, function(err, appointment) {
+        if (err) {
+            console.log(err);
+            next(err);
+        } else {
+            res.render('index', {
+                title: 'Pets-R-Us'
+            })
+        }
+    })
+})
+
+// does the GET process for the View My Appointments page
+app.get('/myappointments', (req, res) => {
+    res.render('myappointments', {
+        title: 'Pets-R-Us: My Appointments',
+        pageTitle: 'View My Appointments'
+    })
+})
+
+app.get('/api/appointments/:email', async(req, res, next) => {
+    appointment.find({ 'email': req.params.email }, function(err, appointments) {
+        if (err) {
+            console.log(err);
+            next(err);
+        } else {
+            res.json(appointments);
+        }
+    })
+})
+
 
 // Port 3000
 app.listen(PORT, () => {
