@@ -39,57 +39,57 @@ app.use(express.static(path.join(__dirname, 'public/images')));
 // PORT set to 3000
 const PORT = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-    res.render('index', {
+app.get('/index.ejs', (req, res) => {
+    res.render('index.ejs', {
         title: 'Pets-R-Us: Home',
         pageTitle: 'Landing Page'
     })
 });
 
-app.get('/grooming', (req, res) => {
-    res.render('grooming', {
+app.get('/grooming.ejs', (req, res) => {
+    res.render('grooming.ejs', {
         title: 'Pets-R-Us: Grooming',
         pageTitle: 'Pets-R-Us: Grooming'
     })
 });
 
-app.get('/boarding', (req, res) => {
-    res.render('boarding', {
+app.get('/boarding.ejs', (req, res) => {
+    res.render('boarding.ejs', {
         title: "Pets-R-Us: Boarding",
         pageTitle: "Pets-R-Us: Boarding",
     });
 });
 
-app.get('/training', (req, res) => {
-    res.render('training', {
+app.get('/training.ejs', (req, res) => {
+    res.render('training.ejs', {
         title: "Pets-R-Us: Training",
         pageTitle: "Pets-R-Us: Training",
     });
 });
 
-app.get('/register', (req, res) => {
-    res.render('register', {
+app.get('/register.ejs', (req, res) => {
+    res.render('register.ejs', {
         title: "Pets-R-Us: Register",
         pageTitle: "Pets-R-Us: Register",
     });
 });
 
-app.get('/customerList', (req, res) => {
-    res.render('customerList', {
+app.get('/customer-list.ejs', (req, res) => {
+    res.render('customerList.ejs', {
         title: "Pets-R-Us: Customer List",
         pageTitle: "Pets-R-Us: Customer List",
     });
 });
 
-app.get('/appointment', (req, res) => {
-    res.render('appointment', {
+app.get('/appointment.ejs', (req, res) => {
+    res.render('appointment.ejs', {
         title: "Pets-R-Us: My Appointments",
         pageTitle: "Pets-R-Us: My Appointments",
     });
 });
 
 // post route
-app.post('/customers', (req, res, next) => {
+app.post('/customer', (req, res, next) => {
     console.log(req.body);
     console.log(req.body.customerId);
     console.log(req.body.email);
@@ -130,13 +130,13 @@ app.get('/customers', (req, res) => {
 })
 
 // renders the booking.ejs page and gets service info from services.json
-app.get('/booking', (req, res) => {
+app.get('/booking.ejs', (req, res) => {
     let jsonFile = fs.readFileSync('./public/data/services.json');
     let services = JSON.parse(jsonFile);
 
     console.log(services);
 
-    res.render('booking', {
+    res.render('booking.ejs', {
         title: 'Pets-R-Us: Appointment Booking',
         pageTitle: 'Pets-R-Us: Appointment Booking',
         services: services
@@ -167,7 +167,7 @@ app.post('/booking', (req, res, next) => {
 })
 
 // does the GET process for the View My Appointments page
-app.get('/myappointments', (req, res) => {
+app.get('/my-appointments.ejs', (req, res) => {
     res.render('myappointments', {
         title: 'Pets-R-Us: My Appointments',
         pageTitle: 'View My Appointments'
