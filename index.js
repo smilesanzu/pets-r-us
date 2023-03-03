@@ -39,50 +39,50 @@ app.use(express.static(path.join(__dirname, 'public/images')));
 // PORT set to 3000
 const PORT = process.env.PORT || 3000;
 
-app.get('/index.ejs', (req, res) => {
-    res.render('index.ejs', {
+app.get('/', (req, res) => {
+    res.render('index', {
         title: 'Pets-R-Us: Home',
         pageTitle: 'Landing Page'
     })
 });
 
-app.get('/grooming.ejs', (req, res) => {
-    res.render('grooming.ejs', {
+app.get('/grooming', (req, res) => {
+    res.render('grooming', {
         title: 'Pets-R-Us: Grooming',
         pageTitle: 'Pets-R-Us: Grooming'
     })
 });
 
-app.get('/boarding.ejs', (req, res) => {
-    res.render('boarding.ejs', {
+app.get('/boarding', (req, res) => {
+    res.render('boarding', {
         title: "Pets-R-Us: Boarding",
         pageTitle: "Pets-R-Us: Boarding",
     });
 });
 
-app.get('/training.ejs', (req, res) => {
-    res.render('training.ejs', {
+app.get('/training', (req, res) => {
+    res.render('training', {
         title: "Pets-R-Us: Training",
         pageTitle: "Pets-R-Us: Training",
     });
 });
 
-app.get('/register.ejs', (req, res) => {
-    res.render('register.ejs', {
+app.get('/register', (req, res) => {
+    res.render('register', {
         title: "Pets-R-Us: Register",
         pageTitle: "Pets-R-Us: Register",
     });
 });
 
-app.get('/customer-list.ejs', (req, res) => {
-    res.render('customerList.ejs', {
+app.get('/customer-list', (req, res) => {
+    res.render('customerList', {
         title: "Pets-R-Us: Customer List",
         pageTitle: "Pets-R-Us: Customer List",
     });
 });
 
-app.get('/appointment.ejs', (req, res) => {
-    res.render('appointment.ejs', {
+app.get('/appointment', (req, res) => {
+    res.render('appointment', {
         title: "Pets-R-Us: My Appointments",
         pageTitle: "Pets-R-Us: My Appointments",
     });
