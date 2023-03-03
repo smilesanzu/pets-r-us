@@ -47,35 +47,35 @@ app.get('/', (req, res) => {
 });
 
 app.get('/grooming', (req, res) => {
-    res.render('grooming', {
+    res.render('grooming.ejs', {
         title: 'Pets-R-Us: Grooming',
         pageTitle: 'Pets-R-Us: Grooming'
     })
 });
 
 app.get('/boarding', (req, res) => {
-    res.render('boarding', {
+    res.render('boarding.ejs', {
         title: "Pets-R-Us: Boarding",
         pageTitle: "Pets-R-Us: Boarding",
     });
 });
 
 app.get('/training', (req, res) => {
-    res.render('training', {
+    res.render('training.ejs', {
         title: "Pets-R-Us: Training",
         pageTitle: "Pets-R-Us: Training",
     });
 });
 
 app.get('/register', (req, res) => {
-    res.render('register', {
+    res.render('register.ejs', {
         title: "Pets-R-Us: Register",
         pageTitle: "Pets-R-Us: Register",
     });
 });
 
 app.get('/customer-list', (req, res) => {
-    res.render('customerList', {
+    res.render('customer-list.ejs', {
         title: "Pets-R-Us: Customer List",
         pageTitle: "Pets-R-Us: Customer List",
     });
@@ -120,7 +120,7 @@ app.get('/customers', (req, res) => {
             console.log(err);
             next(err);
         } else {
-            res.render('customerlist', {
+            res.render('customer-list', {
                 title: "Pets-R-Us: Customer List",
                 pageTitle: "Pets-R-Us: Customer List",
                 customer: customer
