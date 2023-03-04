@@ -11,7 +11,8 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const Customer = require('./models/customer.js');
+const Customer = require('./models/customer');
+const appointment = require('./models/appointment');
 // express variable
 const app = express();
 
@@ -187,6 +188,4 @@ app.get('/api/appointments/:email', async(req, res, next) => {
 
 
 // Port 3000
-app.listen(PORT, () => {
-    console.log('Application started and listening on PORT ' + PORT);
-});
+app.listen(PORT, () => console.info(`Listening on port ${PORT}`));
