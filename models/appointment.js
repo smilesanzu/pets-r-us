@@ -22,3 +22,4 @@ let appointmentSchema = new Schema({
 
 // export
 module.exports = mongoose.model('Appointment', appointmentSchema);
+module.exports = Appointment;

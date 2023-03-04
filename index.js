@@ -17,7 +17,7 @@ const appointment = require('./models/appointment');
 const app = express();
 
 // mongoose connection address
-const CONN = 'mongodb+srv://sunflower:842128@web340db.u3jxivb.mongodb.net/test';
+const CONN = 'mongodb+srv://sunflower:842128@web340db.u3jxivb.mongodb.net/web340DB';
 
 // displays connection success or error messages
 mongoose.connect(CONN).then(() => {
@@ -30,7 +30,7 @@ mongoose.connect(CONN).then(() => {
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/data')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public/styles')));
@@ -82,8 +82,8 @@ app.get('/customer-list', (req, res) => {
     });
 });
 
-app.get('/appointment', (req, res) => {
-    res.render('appointment', {
+app.get('/booking', (req, res) => {
+    res.render('booking.ejs', {
         title: "Pets-R-Us: My Appointments",
         pageTitle: "Pets-R-Us: My Appointments",
     });
